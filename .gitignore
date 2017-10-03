@@ -1,2 +1,7 @@
 config.yaml
 config.json
+R_Weather_API.Rproj
+.Rproj.user
+.RData
+.Rhistory
+.httr-oauth
