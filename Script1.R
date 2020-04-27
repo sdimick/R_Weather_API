@@ -1,12 +1,15 @@
 library(gmailr)
 library(yaml)
 
-use_secret_file("config.json")
-from.email <- yaml.load_file("config.yaml")$email$from
-to1 <- yaml.load_file("config.yaml")$email$seths_phone
-test_email <- mime(
-  To = to1,
-  From = from.email,
-  #Subject = "Subject",
-  body = "Can you hear me now?")
-send_message(test_email)
+gm_auth_configure(path = "config.json")
+
+test_email <-
+  gm_mime() %>%
+  gm_to("dimicks2010@gmail.com") %>%
+  gm_from("seth.dimick@gmail.com") %>%
+  gm_subject("gmailr test 2") %>%
+  gm_text_body("Can you still hear me?")
+
+# If all is good with your draft, then you can send it
+gm_send_message(test_email)
+
